@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "425034341046",
+    "project_id": "chill-cabs",
+    "storage_bucket": "chill-cabs.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425034341046:android:1ace734106af7e0dc8a417",
+        "android_client_info": {
+          "package_name": "chillcabs.co.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr6v-m5nRt8hgiAmj_etxSwalgkYIgqw4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
