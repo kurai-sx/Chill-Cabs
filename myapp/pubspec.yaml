@@ -30,12 +30,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  permission_handler: ^11.0.1
   sqflite: ^2.4.1
   path_provider: any
-  intl: ^0.17.0
+  intl: 0.19.0
   firebase_auth: ^4.10.1
   firebase_core: ^2.12.0
   path: ^1.9.0
@@ -47,12 +50,14 @@ dependencies:
   bloc: any
   sms_autofill: any
   equatable: any
+  gsheets: ^0.5.0
+  shared_preferences: ^2.5.2
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   image_picker: ^0.8.6+4  # Ensure this is the latest version
-  permission_handler: ^10.2.0
   flutter_launcher_icons: ^0.11.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -81,6 +86,11 @@ flutter:
     - images/shop1.jpg
     - images/profileimage.png
     - images/logo.png
+    - assets/lang/en.json
+    - assets/lang/hi.json
+    - assets/lang/es.json
+    - assets/lang/fr.json
+
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
