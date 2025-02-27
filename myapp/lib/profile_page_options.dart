@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'theme_provider.dart';
+import 'language_provider.dart';
 
-class SettingsPage extends StatefulWidget {
-  @override
-  _SettingsPageState createState() => _SettingsPageState();
-}
-
-class _SettingsPageState extends State<SettingsPage> {
-  bool _isDarkMode = false;
-  String _selectedLanguage = 'English';
-  List<String> languages = ['English', 'Hindi', 'Marathi', 'Sanskrit'];
-
+class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final languageProvider = Provider.of<LanguageProvider>(context);
+    bool isDarkMode = themeProvider.themeMode == ThemeMode.dark;
+
     return Scaffold(
       appBar: AppBar(title: Text("Settings"), backgroundColor: Colors.amber),
       body: Padding(
@@ -23,11 +21,9 @@ class _SettingsPageState extends State<SettingsPage> {
               leading: Icon(Icons.brightness_6, color: Colors.amber),
               title: Text("Dark Mode"),
               trailing: Switch(
-                value: _isDarkMode,
+                value: isDarkMode,
                 onChanged: (value) {
-                  setState(() {
-                    _isDarkMode = value;
-                  });
+                  themeProvider.toggleTheme(value); // ✅ Toggle theme
                 },
               ),
             ),
@@ -36,17 +32,17 @@ class _SettingsPageState extends State<SettingsPage> {
               leading: Icon(Icons.language, color: Colors.amber),
               title: Text("Language"),
               trailing: DropdownButton<String>(
-                value: _selectedLanguage,
-                items: languages.map((String language) {
+                value: languageProvider.selectedLanguage,
+                items: ['English', 'Hindi', 'Spanish', 'French'].map((String language) {
                   return DropdownMenuItem<String>(
                     value: language,
                     child: Text(language),
                   );
                 }).toList(),
                 onChanged: (newValue) {
-                  setState(() {
-                    _selectedLanguage = newValue!;
-                  });
+                  if (newValue != null) {
+                    languageProvider.changeLanguage(newValue); // ✅ Change language globally
+                  }
                 },
               ),
             ),
@@ -56,6 +52,7 @@ class _SettingsPageState extends State<SettingsPage> {
     );
   }
 }
+
 
 class PrivacyPage extends StatelessWidget {
   @override
