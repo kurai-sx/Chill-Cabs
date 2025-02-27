@@ -46,10 +46,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
-
-
-
 class MainNavigation extends StatefulWidget {
   @override
   _MainNavigationState createState() => _MainNavigationState();
