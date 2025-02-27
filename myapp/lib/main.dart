@@ -27,11 +27,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
-    final languageProvider = Provider.of<LanguageProvider>(context);
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      themeMode: themeProvider.themeMode, // ✅ Use global theme mode
+      themeMode: themeProvider.themeMode, // ✅ Apply global theme
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       initialRoute: '/',
@@ -39,7 +37,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => AuthPage(),
         '/otp': (context) => OtpVerificationPage(),
         '/home': (context) => MainNavigation(),
-        '/settings': (context) => SettingsPage(),
+        '/settings': (context) => SettingsPage(),  // ✅ No extra parameters needed
         '/privacy': (context) => PrivacyPage(),
         '/help': (context) => HelpPage(),
         '/mobile_auth': (context) => AuthPage(),
@@ -47,6 +45,9 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+
 
 
 class MainNavigation extends StatefulWidget {
@@ -67,6 +68,8 @@ class _MainNavigationState extends State<MainNavigation> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Scaffold(
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -86,7 +89,7 @@ class _MainNavigationState extends State<MainNavigation> {
             label: "Search",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.location_on_outlined, size: 30, color: Colors.amber),
+            icon: Icon(Icons.location_on_outlined, size: 30),
             label: "Locate",
           ),
           BottomNavigationBarItem(
@@ -98,7 +101,7 @@ class _MainNavigationState extends State<MainNavigation> {
             label: "Profile",
           ),
         ],
-        selectedItemColor: Colors.black,
+        selectedItemColor: themeProvider.isDarkMode ? Colors.white : Colors.black,
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: false,
         showSelectedLabels: false,
